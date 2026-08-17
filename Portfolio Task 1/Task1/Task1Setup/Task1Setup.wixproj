@@ -1,0 +1,5 @@
+﻿<Project Sdk="WixToolset.Sdk/4.0.6">
+	<ItemGroup>
+		<ProjectReference Include="..\Task1\Task1.csproj" />
+	</ItemGroup>
+</Project>

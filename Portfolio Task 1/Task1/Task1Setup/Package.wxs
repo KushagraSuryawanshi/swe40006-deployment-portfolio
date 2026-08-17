@@ -1,0 +1,9 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Package Name="Task1Setup"  Manufacturer="Kushagra Suryawanshi" Version="1.0.0" UpgradeCode="2A4C4483-E6FA-4D72-B1A9-0F4D4A7C75CE">
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+
+    <Feature Id="Main">
+      <ComponentGroupRef Id="ExampleComponents" />
+    </Feature>
+  </Package>
+</Wix>

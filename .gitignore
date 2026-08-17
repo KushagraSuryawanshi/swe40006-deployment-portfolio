@@ -1,0 +1,23 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# .NET build output
+**/bin/
+**/obj/
+
+# WiX generated output
+*.msi
+*.wixpdb
+*.wixobj
+*.cab
+
+# Test / temporary files
+TestResults/
+*.tmp
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

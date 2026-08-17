@@ -1,0 +1,23 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+		<ComponentGroup Id="ExampleComponents" Directory="INSTALLFOLDER">
+
+			<Component>
+				<File Source="Task1.exe" KeyPath="yes" />
+			</Component>
+
+			<Component>
+				<File Source="Task1.dll" KeyPath="yes" />
+			</Component>
+
+			<Component>
+				<File Source="Task1.deps.json" KeyPath="yes" />
+			</Component>
+
+			<Component>
+				<File Source="Task1.runtimeconfig.json" KeyPath="yes" />
+			</Component>
+
+		</ComponentGroup>
+	</Fragment>
+</Wix>
