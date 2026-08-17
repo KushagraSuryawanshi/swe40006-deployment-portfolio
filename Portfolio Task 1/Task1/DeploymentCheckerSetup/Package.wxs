@@ -1,0 +1,9 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Package Name="DeploymnetChecker"  Manufacturer="Kushagra Suryawanshi" Version="1.0.0" UpgradeCode="B5D87F1F-3B43-459E-A744-502E2522251B">
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+
+    <Feature Id="Main">
+      <ComponentGroupRef Id="ExampleComponents" />
+    </Feature>
+  </Package>
+</Wix>

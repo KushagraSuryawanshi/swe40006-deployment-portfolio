@@ -1,0 +1,23 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+<Fragment>
+	<ComponentGroup Id="ExampleComponents" Directory="INSTALLFOLDER">
+
+		<Component>
+			<File Source="DeploymentChecker.exe" KeyPath="yes" />
+		</Component>
+
+		<Component>
+			<File Source="DeploymentChecker.dll" KeyPath="yes" />
+		</Component>
+
+		<Component>
+			<File Source="DeploymentChecker.deps.json" KeyPath="yes" />
+		</Component>
+
+		<Component>
+			<File Source="DeploymentChecker.runtimeconfig.json" KeyPath="yes" />
+		</Component>
+
+	</ComponentGroup>
+</Fragment>
+</Wix>
