@@ -18,6 +18,18 @@
 			<File Source="DeploymentChecker.runtimeconfig.json" KeyPath="yes" />
 		</Component>
 
+		<Component>
+			<File Source="Humanizer.dll" KeyPath="yes" />
+		</Component>
+
+		<Component>
+			<File Source="Spectre.Console.dll" KeyPath="yes" />
+		</Component>
+
+		<Component>
+			<File Source="Spectre.Console.Ansi.dll" KeyPath="yes" />
+		</Component>
+
 	</ComponentGroup>
 </Fragment>
 </Wix>

@@ -1,4 +1,7 @@
 ﻿using System;
+using Spectre.Console;
+using Humanizer;
+
 namespace DeploymentChecker
 {
     class Program
@@ -7,62 +10,80 @@ namespace DeploymentChecker
         {
             Console.WriteLine("Enter Deployment folder path:");
             string? userInput = Console.ReadLine();
+            userInput = userInput?.Trim().Trim('"');
 
-            if (string.IsNullOrWhiteSpace(userInput) || !Directory.Exists(userInput)) {
+
+            if (string.IsNullOrWhiteSpace(userInput) || !Directory.Exists(userInput))
+            {
                 Console.WriteLine("Directory does not exist");
             }
             else
             {
-                Console.WriteLine("Directory found");
+                AnsiConsole.MarkupLine("[green]Directory found[/]");
+
                 string[] allFiles = Directory.GetFiles(userInput);
                 long totalSize = 0;
 
-                Console.WriteLine($"File count: {allFiles.Length}");
-
                 bool hasExe = false;
-                bool hasDll = false;
-                bool hasJson = false;
+                int dllCount = 0;
+                bool hasDepsJson = false;
+                bool hasRuntimeConfigJson = false;
 
                 foreach (string file in allFiles)
                 {
                     FileInfo fileInfo = new FileInfo(file);
                     totalSize += fileInfo.Length;
 
-                    Console.WriteLine(Path.GetFileName(file));
-
+                    string fileName = Path.GetFileName(file);
                     string extension = Path.GetExtension(file);
 
-                    if (extension == ".exe") 
-                    {
+                    if (extension.Equals(".exe", StringComparison.OrdinalIgnoreCase))
                         hasExe = true;
-                    }
-                    if (extension == ".dll") 
-                    {
-                        hasDll = true;
-                    }
-                    if (extension == ".json")
-                    {
-                        hasJson = true;
-                    }
-                
+
+                    if (extension.Equals(".dll", StringComparison.OrdinalIgnoreCase))
+                        dllCount++;
+
+                    if (fileName.EndsWith(".deps.json", StringComparison.OrdinalIgnoreCase))
+                        hasDepsJson = true;
+
+                    if (fileName.EndsWith(".runtimeconfig.json", StringComparison.OrdinalIgnoreCase))
+                        hasRuntimeConfigJson = true;
                 }
 
-                Console.WriteLine($"Total size: {totalSize} bytes");
-                Console.WriteLine($"EXE found: {hasExe}");
-                Console.WriteLine($"DLL found: {hasDll}");
-                Console.WriteLine($"JSON found: {hasJson}");
+                var table = new Table();
 
-                if (hasExe && hasDll && hasJson)
+                table.AddColumn("Check");
+                table.AddColumn("Result");
+
+                table.AddRow("File count",
+                    $"{allFiles.Length} ({allFiles.Length.ToWords()})");
+                table.AddRow("Total size", $"{totalSize} bytes");
+                table.AddRow("EXE found", hasExe.ToString());
+                table.AddRow("DLL count", dllCount.ToString());
+                table.AddRow(".deps.json", hasDepsJson.ToString());
+                table.AddRow(".runtimeconfig.json", hasRuntimeConfigJson.ToString());
+
+                AnsiConsole.Write(table);
+
+                bool isValid =
+                    hasExe &&
+                    dllCount >= 2 &&
+                    hasDepsJson &&
+                    hasRuntimeConfigJson;
+
+                if (isValid)
                 {
-                    Console.WriteLine("Deployment package looks valid.");
+                    AnsiConsole.MarkupLine(
+                        "[green]Deployment package looks valid[/]");
                 }
                 else
                 {
-                    Console.WriteLine("Deployment package looks incomplete.");
+                    AnsiConsole.MarkupLine(
+                        "[red]Deployment package looks incomplete.[/]");
                 }
             }
-
-           
+            Console.WriteLine("\nPress any key to exit...");
+            Console.ReadKey();
         }
     }
 }
