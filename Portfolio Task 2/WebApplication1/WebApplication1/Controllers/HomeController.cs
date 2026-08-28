@@ -8,7 +8,8 @@ namespace WebApplication1.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+
+            return View(new DeploymentInfoViewModel { ApplicationName = "Deployment Portfolio", Runtime = ".NET 10", DeploymentTarget = "Azure App Service", Status = "Running" });
         }
 
         public IActionResult Privacy()
