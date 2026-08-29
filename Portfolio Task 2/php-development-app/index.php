@@ -17,4 +17,4 @@ $host = $_SERVER["HTTP_HOST"];
         <li>Request Method: <?= $req_method ?> </li>
         <li>Host: <?= $host ?> </li>
     </ul>
-</div>
+</div> 
