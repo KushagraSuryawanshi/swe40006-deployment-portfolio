@@ -13,6 +13,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+// Health check service
+builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
@@ -42,5 +44,8 @@ app.MapControllerRoute(
 
 app.MapRazorPages()
    .WithStaticAssets();
+
+// Health Check Route
+app.MapHealthChecks("/health");
 
 app.Run();
