@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/87024245-7727-4b98-9863-866bf4aefd12/resourceGroups/webapplication120260829131514resourcegroup/providers/Microsoft.Web/sites/php-deployment-portfolio2-kushagra-2026",
+  "appService.deploySubpath": "Portfolio Task 2\\php-development-app"
+}
