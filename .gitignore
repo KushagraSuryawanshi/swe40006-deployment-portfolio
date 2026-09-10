@@ -24,3 +24,7 @@ Thumbs.db
 
 # Canvas Submissions
 Reports/
+
+**.pem
+
+**.gz
