@@ -1,0 +1,4 @@
+
+Docker containers package applications with their dependencies.
+This file is being processed by a non-web Python application.
+The output should persist on the host machine.
