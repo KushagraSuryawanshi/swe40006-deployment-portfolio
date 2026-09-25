@@ -28,3 +28,5 @@ Reports/
 **.pem
 
 **.gz
+
+.vscode/

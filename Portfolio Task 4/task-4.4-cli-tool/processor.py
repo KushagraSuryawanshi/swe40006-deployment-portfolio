@@ -8,7 +8,7 @@ lines = len(text.splitlines())
 words = len(text.split())
 characters = len(text)
 
-result = f"""Fil Processing Results
+result = f"""File Processing Results
 Lines: {lines}
 Words: {words}
 Characters: {characters}
